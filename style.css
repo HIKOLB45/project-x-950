@@ -1,0 +1,136 @@
+/* ГЛОБАЛЬНІ НАЛАШТУВАННЯ */
+:root {
+    --primary: #00f2ff;
+    --accent: #bc13fe;
+    --bg: #030712;
+    --card-bg: rgba(17, 24, 39, 0.7);
+    --text: #f3f4f6;
+    --glass-border: 1px solid rgba(0, 242, 255, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    overflow-x: hidden;
+    background-image: radial-gradient(circle at 50% 50%, #111827 0%, #030712 100%);
+}
+
+/* НАВІГАЦІЯ */
+.glass-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(3, 7, 18, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo { font-family: 'Orbitron'; font-weight: 900; font-size: 1.5rem; letter-spacing: 2px; }
+.logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+/* КОНТЕЙНЕР ДОДАТКУ */
+.app-container {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    height: calc(100vh - 80px);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* ЛІВА ПАНЕЛЬ (КОНТРОЛЬ) */
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+}
+
+.card {
+    background: var(--card-bg);
+    border: var(--glass-border);
+    border-radius: 16px;
+    padding: 25px;
+    backdrop-filter: blur(5px);
+}
+
+.card h3 { font-family: 'Orbitron'; font-size: 0.9rem; margin-bottom: 20px; color: var(--primary); }
+
+.input-group { margin-bottom: 15px; }
+.input-group label { display: block; font-size: 0.8rem; margin-bottom: 8px; color: #9ca3af; }
+.input-group input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #374151;
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    font-family: inherit;
+    outline: none;
+}
+
+.input-group input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(0, 242, 255, 0.2); }
+
+.btn-update {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    border: none;
+    border-radius: 8px;
+    color: black;
+    font-family: 'Orbitron';
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-update:hover { transform: scale(1.02); box-shadow: 0 0 20px var(--primary); }
+
+/* РЕЗУЛЬТАТИ */
+.res-item { margin-bottom: 10px; font-size: 1.1rem; }
+.res-item span { color: var(--primary); font-weight: bold; }
+.cost { font-size: 1.4rem; margin-top: 15px; border-top: 1px solid #374151; padding-top: 15px; }
+
+/* ЗОНА ЗАВАНТАЖЕННЯ */
+.upload-zone {
+    border: 2px dashed #374151;
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.upload-zone:hover { border-color: var(--primary); background: rgba(0, 242, 255, 0.05); }
+
+/* ПРАВА ПАНЕЛЬ (3D) */
+.visualizer {
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: var(--glass-border);
+    position: relative;
+    overflow: hidden;
+}
+
+#canvas-3d { width: 100%; height: 100%; }
+
+.overlay-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'Orbitron';
+    font-size: 0.7rem;
+    color: #4b5563;
+}
+
+/* АДАПТИВНІСТЬ */
+@media (max-width: 1000px) {
+    .app-container { grid-template-columns: 1fr; height: auto; }
+    .visualizer { height: 400px; }
+}
